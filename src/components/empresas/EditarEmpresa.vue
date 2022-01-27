@@ -1,6 +1,8 @@
 <template>
   <v-container class="mt-10">
-    <h1 class="text-center text-h4 font-weight-light mb-10">Datos Empresa</h1>
+    <h1 class="text-center text-h4 font-weight-light mb-10">
+      Editar Datos Empresa
+    </h1>
 
     <v-row justify="center" no-gutters class="mt-5">
       <v-col xs="10" sm="8" class="mb-6">
@@ -15,7 +17,7 @@
                     rules="required"
                   >
                     <v-text-field
-                      v-model="empresa.nombre"
+                      v-model="empresa.data.nombre"
                       :error-messages="errors"
                       label="Nombre"
                       required
@@ -30,7 +32,7 @@
                     rules="required"
                   >
                     <v-text-field
-                      v-model="empresa.categoria"
+                      v-model="empresa.data.categoria"
                       :error-messages="errors"
                       label="Categoria"
                       required
@@ -45,7 +47,7 @@
                     rules="required"
                   >
                     <v-text-field
-                      v-model="empresa.region"
+                      v-model="empresa.data.region"
                       :error-messages="errors"
                       label="Region"
                       required
@@ -60,7 +62,7 @@
                     rules="required"
                   >
                     <v-text-field
-                      v-model="empresa.comuna"
+                      v-model="empresa.data.comuna"
                       :error-messages="errors"
                       label="Comuna"
                       required
@@ -77,7 +79,7 @@
                     rules="required"
                   >
                     <v-textarea
-                      v-model="empresa.descripcion"
+                      v-model="empresa.data.descripcion"
                       :error-messages="errors"
                       label="Descripción"
                       required
@@ -95,7 +97,7 @@
                     rules="required"
                   >
                     <v-text-field
-                      v-model="empresa.responsable"
+                      v-model="empresa.data.responsable"
                       :error-messages="errors"
                       label="Nombre Responsable"
                       required
@@ -110,7 +112,7 @@
                     rules="required|email"
                   >
                     <v-text-field
-                      v-model="empresa.email"
+                      v-model="empresa.data.email"
                       :error-messages="errors"
                       label="E-mail"
                       required
@@ -126,7 +128,7 @@
                     rules="required"
                   >
                     <v-text-field
-                      v-model="empresa.telefono"
+                      v-model="empresa.data.telefono"
                       :error-messages="errors"
                       label="Telefono"
                       required
@@ -142,7 +144,7 @@
                 <v-col cols="12">
                   <validation-provider v-slot="{ errors }" name="instagram">
                     <v-text-field
-                      v-model="empresa.instagram"
+                      v-model="empresa.data.instagram"
                       :error-messages="errors"
                       label="Instagram"
                       outlined
@@ -153,7 +155,7 @@
                 <v-col cols="12" class="mt-n7">
                   <validation-provider v-slot="{ errors }" name="facebook">
                     <v-text-field
-                      v-model="empresa.facebook"
+                      v-model="empresa.data.facebook"
                       :error-messages="errors"
                       label="Facebook"
                       prepend-inner-icon="mdi-facebook"
@@ -164,7 +166,7 @@
                 <v-col cols="12" class="mt-n7">
                   <validation-provider v-slot="{ errors }" name="twitter">
                     <v-text-field
-                      v-model="empresa.twitter"
+                      v-model="empresa.data.twitter"
                       :error-messages="errors"
                       label="Twitter"
                       outlined
@@ -182,7 +184,7 @@
                     rules="required"
                   >
                     <v-text-field
-                      v-model="empresa.imagen"
+                      v-model="empresa.data.imagen"
                       :error-messages="errors"
                       label="Url imagen logo"
                       required
@@ -191,21 +193,21 @@
                     ></v-text-field> </validation-provider
                 ></v-col>
                 <v-col cols="12" class="d-flex justify-center">
-                  <img :src="empresa.imagen" width="150" alt="" contain />
+                  <img :src="empresa.data.imagen" width="150" alt="" contain />
                 </v-col>
               </v-row>
 
               <v-row>
                 <v-col>
                   <v-switch
-                    v-model="empresa.destacado"
+                    v-model="empresa.data.destacado"
                     inset
                     label="Marcar como destacado"
                   ></v-switch>
                 </v-col>
                 <v-col>
                   <v-switch
-                    v-model="empresa.activo"
+                    v-model="empresa.data.activo"
                     inset
                     label="Activar producto?"
                   ></v-switch>
@@ -221,7 +223,7 @@
               color="success"
               light
             >
-              Registrar
+              Editar
             </v-btn>
           </form>
         </validation-observer>
@@ -241,7 +243,7 @@ import {
 
 import { mapState, mapActions } from "vuex";
 
-import { collection, getFirestore, addDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 setInteractionMode("eager");
 
@@ -266,42 +268,22 @@ extend("email", {
 });
 
 export default {
-  name: "CrearEmpresa",
+  name: "EditarEmpresa",
   components: {
     ValidationProvider,
     ValidationObserver,
   },
   data: () => ({
-    empresa: {
-      nombre: "",
-      categoria: "",
-      descripcion: "",
-
-      region: "",
-      comuna: "",
-
-      responsable: "",
-      email: "",
-      telefono: "",
-
-      instagram: "",
-      facebook: "",
-      twitter: "",
-
-      imagen: "",
-
-      destacado: false,
-      activo: true,
-    },
     show: false,
   }),
   computed: {
     ...mapState("usuarios", ["usuario"]),
+    ...mapState("empresas", ["empresa"]),
   },
   methods: {
     submit() {
       this.$refs.observer.validate();
-      this.crearEmpresa();
+      this.editarEmpresa();
     },
 
     redirect() {
@@ -310,8 +292,8 @@ export default {
 
     mensaje() {
       this.$swal({
-        title: "Tu empresa ha sido Creada!",
-        text: "",
+        title: "",
+        text: "Datos editados con Exito",
         icon: "success",
         buttons: false,
         timer: 2000,
@@ -324,33 +306,33 @@ export default {
       this.$refs.observer.reset();
     },
 
-    async crearEmpresa() {
-      console.log("CrearEmpresa");
+    async editarEmpresa() {
+      console.log("EditaEmpresa");
       const db = getFirestore();
-
+      const identificador = this.empresa.id;
+      const empresa = this.empresa.data;
+      console.log("1", identificador);
       try {
-        await addDoc(collection(db, "empresas"), {
-          nombre: this.empresa.nombre,
-          categoria: this.empresa.categoria,
-          descripcion: this.empresa.descripcion,
+        await setDoc(doc(db, "empresas", identificador), {
+          nombre: empresa.nombre,
+          categoria: empresa.categoria,
+          descripcion: empresa.descripcion,
 
-          region: this.empresa.region,
-          comuna: this.empresa.comuna,
+          region: empresa.region,
+          comuna: empresa.comuna,
 
-          responsable: this.empresa.responsable,
-          email: this.empresa.email,
-          telefono: this.empresa.telefono,
+          responsable: empresa.responsable,
+          email: empresa.email,
+          telefono: empresa.telefono,
 
-          instagram: this.empresa.instagram,
-          facebook: this.empresa.facebook,
-          twitter: this.empresa.twitter,
+          instagram: empresa.instagram,
+          facebook: empresa.facebook,
+          twitter: empresa.twitter,
 
-          imagen: this.empresa.imagen,
+          imagen: empresa.imagen,
 
-          destacado: this.empresa.destacado,
-          activo: this.empresa.activo,
-
-          key: this.usuario.uid,
+          destacado: empresa.destacado,
+          activo: empresa.activo,
         });
 
         this.mensaje();
