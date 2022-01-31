@@ -9,6 +9,7 @@
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "firebase": "^9.6.4",
     "sweetalert": "^2.1.2",

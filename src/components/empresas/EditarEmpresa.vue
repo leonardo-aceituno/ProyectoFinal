@@ -1,234 +1,308 @@
 <template>
-  <v-container class="mt-10">
-    <h1 class="text-center text-h4 font-weight-light mb-10">
-      Editar Datos Empresa
-    </h1>
+  <v-container class="my-10 d-flex justify-center">
+    <v-card tile max-width="800" elevation="5">
+      <h1 class="text-center text-h4 font-weight-light mb-10 pt-10">
+        Editar Datos Empresa
+      </h1>
 
-    <v-row justify="center" no-gutters class="mt-5">
-      <v-col xs="10" sm="8" class="mb-6">
-        <validation-observer ref="observer" v-slot="{ invalid }">
-          <form @submit.prevent="submit">
-            <v-container>
-              <v-row>
-                <v-col cols="12" class="mt-n7">
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="nombre"
-                    rules="required"
-                  >
-                    <v-text-field
-                      v-model="empresa.data.nombre"
-                      :error-messages="errors"
-                      label="Nombre"
-                      required
-                      outlined
-                      dense
-                    ></v-text-field> </validation-provider
-                ></v-col>
-                <v-col cols="12" class="mt-n7">
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="categoria"
-                    rules="required"
-                  >
-                    <v-text-field
-                      v-model="empresa.data.categoria"
-                      :error-messages="errors"
-                      label="Categoria"
-                      required
-                      outlined
-                      dense
-                    ></v-text-field> </validation-provider
-                ></v-col>
-                <v-col cols="12" md="6" class="mt-n7">
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="region"
-                    rules="required"
-                  >
-                    <v-text-field
-                      v-model="empresa.data.region"
-                      :error-messages="errors"
-                      label="Region"
-                      required
-                      outlined
-                      dense
-                    ></v-text-field> </validation-provider
-                ></v-col>
-                <v-col cols="12" md="6" class="mt-n7">
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="comuna"
-                    rules="required"
-                  >
-                    <v-text-field
-                      v-model="empresa.data.comuna"
-                      :error-messages="errors"
-                      label="Comuna"
-                      required
-                      outlined
-                      dense
-                    ></v-text-field> </validation-provider
-                ></v-col>
-              </v-row>
-              <v-row class="mt-n7">
-                <v-col cols="12">
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="descripcion"
-                    rules="required"
-                  >
-                    <v-textarea
-                      v-model="empresa.data.descripcion"
-                      :error-messages="errors"
-                      label="Descripción"
-                      required
-                      outlined
-                      dense
-                    ></v-textarea> </validation-provider
-                ></v-col>
-              </v-row>
+      <v-row justify="center" no-gutters class="mt-5">
+        <v-col xs="10" sm="8" class="mb-6">
+          <validation-observer ref="observer" v-slot="{ invalid }">
+            <form @submit.prevent="submit">
+              <v-container>
+                <v-row>
+                  <v-col cols="12" class="mt-n7">
+                    <validation-provider
+                      v-slot="{ errors }"
+                      name="nombre"
+                      rules="required"
+                    >
+                      <v-text-field
+                        v-model="empresa.data.nombre"
+                        :error-messages="errors"
+                        label="Nombre"
+                        required
+                        outlined
+                        dense
+                        prepend-inner-icon="mdi-domain"
+                      ></v-text-field>
+                    </validation-provider>
+                  </v-col>
 
-              <v-row>
-                <v-col cols="12">
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="responsable"
-                    rules="required"
-                  >
-                    <v-text-field
-                      v-model="empresa.data.responsable"
-                      :error-messages="errors"
-                      label="Nombre Responsable"
-                      required
-                      outlined
-                      dense
-                    ></v-text-field> </validation-provider
-                ></v-col>
-                <v-col cols="12" md="8" class="mt-n7">
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="email"
-                    rules="required|email"
-                  >
-                    <v-text-field
-                      v-model="empresa.data.email"
-                      :error-messages="errors"
-                      label="E-mail"
-                      required
-                      outlined
-                      dense
-                      prepend-inner-icon="mdi-email"
-                    ></v-text-field> </validation-provider
-                ></v-col>
-                <v-col cols="12" md="4" class="mt-n7">
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="telefono"
-                    rules="required"
-                  >
-                    <v-text-field
-                      v-model="empresa.data.telefono"
-                      :error-messages="errors"
-                      label="Telefono"
-                      required
-                      outlined
-                      dense
-                      prepend-inner-icon="mdi-phone"
-                    ></v-text-field> </validation-provider
-                ></v-col>
-              </v-row>
+                  <v-col cols="12" class="mt-n7">
+                    <validation-provider
+                      v-slot="{ errors }"
+                      name="categoria"
+                      rules="required"
+                    >
+                      <v-text-field
+                        v-model="empresa.data.categoria"
+                        :error-messages="errors"
+                        label="Categoria"
+                        required
+                        outlined
+                        dense
+                        prepend-inner-icon="mdi-clipboard-list"
+                      ></v-text-field>
+                    </validation-provider>
+                  </v-col>
 
-              <!-- RRSS -->
-              <v-row>
-                <v-col cols="12">
-                  <validation-provider v-slot="{ errors }" name="instagram">
-                    <v-text-field
-                      v-model="empresa.data.instagram"
-                      :error-messages="errors"
-                      label="Instagram"
-                      outlined
-                      dense
-                      prepend-inner-icon="mdi-instagram"
-                    ></v-text-field> </validation-provider
-                ></v-col>
-                <v-col cols="12" class="mt-n7">
-                  <validation-provider v-slot="{ errors }" name="facebook">
-                    <v-text-field
-                      v-model="empresa.data.facebook"
-                      :error-messages="errors"
-                      label="Facebook"
-                      prepend-inner-icon="mdi-facebook"
-                      outlined
-                      dense
-                    ></v-text-field> </validation-provider
-                ></v-col>
-                <v-col cols="12" class="mt-n7">
-                  <validation-provider v-slot="{ errors }" name="twitter">
-                    <v-text-field
-                      v-model="empresa.data.twitter"
-                      :error-messages="errors"
-                      label="Twitter"
-                      outlined
-                      dense
-                      prepend-inner-icon="mdi-twitter"
-                    ></v-text-field> </validation-provider
-                ></v-col>
-              </v-row>
+                  <v-col cols="12" md="6" class="mt-n7">
+                    <validation-provider
+                      v-slot="{ errors }"
+                      name="region"
+                      rules="required"
+                    >
+                      <!-- <v-text-field
+                        v-model="empresa.data.region"
+                        :error-messages="errors"
+                        label="Region"
+                        required
+                        outlined
+                        dense
+                        prepend-inner-icon="mdi-map-marker"
+                      ></v-text-field>  -->
+                      <v-select
+                        v-model="empresa.data.region"
+                        :items="nombreRegion"
+                        :error-messages="errors"
+                        label="Region"
+                        required
+                        outlined
+                        dense
+                        @change="comuna"
+                        prepend-inner-icon="mdi-map-marker"
+                      ></v-select>
+                    </validation-provider>
+                  </v-col>
 
-              <v-row>
-                <v-col cols="12">
-                  <validation-provider
-                    v-slot="{ errors }"
-                    name="imagen"
-                    rules="required"
-                  >
-                    <v-text-field
-                      v-model="empresa.data.imagen"
-                      :error-messages="errors"
-                      label="Url imagen logo"
-                      required
-                      outlined
-                      dense
-                    ></v-text-field> </validation-provider
-                ></v-col>
-                <v-col cols="12" class="d-flex justify-center">
-                  <img :src="empresa.data.imagen" width="150" alt="" contain />
-                </v-col>
-              </v-row>
+                  <v-col cols="12" md="6" class="mt-n7">
+                    <validation-provider
+                      v-slot="{ errors }"
+                      name="comuna"
+                      rules="required"
+                    >
+                      <!-- <v-text-field
+                        v-model="empresa.data.comuna"
+                        :error-messages="errors"
+                        label="Comuna"
+                        required
+                        outlined
+                        dense
+                        prepend-inner-icon="mdi-map-marker"
+                      ></v-text-field>  -->
+                      <v-select
+                        v-model="empresa.data.comuna"
+                        :items="comunas"
+                        :error-messages="errors"
+                        label="Comuna"
+                        required
+                        outlined
+                        dense
+                        prepend-inner-icon="mdi-map-marker"
+                      ></v-select>
+                    </validation-provider>
+                  </v-col>
+                </v-row>
 
-              <v-row>
-                <v-col>
-                  <v-switch
-                    v-model="empresa.data.destacado"
-                    inset
-                    label="Marcar como destacado"
-                  ></v-switch>
-                </v-col>
-                <v-col>
-                  <v-switch
-                    v-model="empresa.data.activo"
-                    inset
-                    label="Activar producto?"
-                  ></v-switch>
-                </v-col>
-              </v-row>
-            </v-container>
+                <v-row class="mt-n7">
+                  <v-col cols="12">
+                    <validation-provider
+                      v-slot="{ errors }"
+                      name="descripcion"
+                      rules="required"
+                    >
+                      <v-textarea
+                        v-model="empresa.data.descripcion"
+                        :error-messages="errors"
+                        label="Descripción"
+                        required
+                        outlined
+                        dense
+                        prepend-inner-icon="mdi-comment"
+                      ></v-textarea>
+                    </validation-provider>
+                  </v-col>
+                </v-row>
 
-            <v-btn
-              class="mt-10"
-              type="submit"
-              :disabled="invalid"
-              block
-              color="success"
-              light
-            >
-              Editar
-            </v-btn>
-          </form>
-        </validation-observer>
-      </v-col>
-    </v-row>
+                <v-row>
+                  <v-col cols="12">
+                    <validation-provider
+                      v-slot="{ errors }"
+                      name="responsable"
+                      rules="required"
+                    >
+                      <v-text-field
+                        v-model="empresa.data.responsable"
+                        :error-messages="errors"
+                        label="Nombre Responsable"
+                        required
+                        outlined
+                        dense
+                        prepend-inner-icon="mdi-account"
+                      ></v-text-field>
+                    </validation-provider>
+                  </v-col>
+
+                  <v-col cols="12" md="8" class="mt-n7">
+                    <validation-provider
+                      v-slot="{ errors }"
+                      name="email"
+                      rules="required|email"
+                    >
+                      <v-text-field
+                        v-model="empresa.data.email"
+                        :error-messages="errors"
+                        label="E-mail"
+                        required
+                        outlined
+                        dense
+                        rows="2"
+                        prepend-inner-icon="mdi-email"
+                      ></v-text-field>
+                    </validation-provider>
+                  </v-col>
+
+                  <v-col cols="12" md="4" class="mt-n7">
+                    <validation-provider
+                      v-slot="{ errors }"
+                      name="telefono"
+                      rules="required"
+                    >
+                      <v-text-field
+                        v-model="empresa.data.telefono"
+                        :error-messages="errors"
+                        label="Telefono"
+                        required
+                        outlined
+                        dense
+                        prepend-inner-icon="mdi-phone"
+                      ></v-text-field> </validation-provider
+                  ></v-col>
+                </v-row>
+
+                <!-- RRSS -->
+                <v-row>
+                  <v-col cols="12">
+                    <validation-provider v-slot="{ errors }" name="instagram">
+                      <v-text-field
+                        v-model="empresa.data.instagram"
+                        :error-messages="errors"
+                        label="Instagram"
+                        outlined
+                        dense
+                        prepend-inner-icon="mdi-instagram"
+                      ></v-text-field>
+                    </validation-provider>
+                  </v-col>
+
+                  <v-col cols="12" class="mt-n7">
+                    <validation-provider v-slot="{ errors }" name="facebook">
+                      <v-text-field
+                        v-model="empresa.data.facebook"
+                        :error-messages="errors"
+                        label="Facebook"
+                        prepend-inner-icon="mdi-facebook"
+                        outlined
+                        dense
+                      ></v-text-field>
+                    </validation-provider>
+                  </v-col>
+
+                  <v-col cols="12" class="mt-n7">
+                    <validation-provider v-slot="{ errors }" name="twitter">
+                      <v-text-field
+                        v-model="empresa.data.twitter"
+                        :error-messages="errors"
+                        label="Twitter"
+                        outlined
+                        dense
+                        prepend-inner-icon="mdi-twitter"
+                      ></v-text-field>
+                    </validation-provider>
+                  </v-col>
+
+                  <v-col cols="12" class="mt-n7">
+                    <validation-provider v-slot="{ errors }" name="web">
+                      <v-text-field
+                        v-model="empresa.data.web"
+                        :error-messages="errors"
+                        label="Web"
+                        outlined
+                        dense
+                        prepend-inner-icon="mdi-web"
+                      ></v-text-field>
+                    </validation-provider>
+                  </v-col>
+                </v-row>
+
+                <v-row>
+                  <v-col cols="12">
+                    <validation-provider
+                      v-slot="{ errors }"
+                      name="imagen"
+                      rules="required"
+                    >
+                      <v-text-field
+                        v-model="empresa.data.imagen"
+                        :error-messages="errors"
+                        label="Url imagen logo"
+                        required
+                        outlined
+                        dense
+                        prepend-inner-icon="mdi-file-image"
+                      ></v-text-field>
+                    </validation-provider>
+                  </v-col>
+
+                  <v-col cols="12" class="d-flex justify-center">
+                    <img
+                      :src="empresa.data.imagen"
+                      width="150"
+                      alt=""
+                      contain
+                    />
+                  </v-col>
+                </v-row>
+
+                <v-row>
+                  <v-col>
+                    <v-switch
+                      v-model="empresa.data.destacado"
+                      inset
+                      label="Marcar como destacado"
+                    ></v-switch>
+                  </v-col>
+
+                  <v-col>
+                    <v-switch
+                      v-model="empresa.data.activo"
+                      inset
+                      label="Activar producto?"
+                    ></v-switch>
+                  </v-col>
+                </v-row>
+              </v-container>
+
+              <div class="mt-15 d-flex justify-end">
+                <v-btn
+                  type="submit"
+                  color="success"
+                  class="mr-0"
+                  :disabled="invalid"
+                  light
+                >
+                  Editar
+                </v-btn>
+                <v-btn color="error" class="ms-4" to="/dashboard">
+                  Cancelar
+                </v-btn>
+              </div>
+            </form>
+          </validation-observer>
+        </v-col>
+      </v-row>
+    </v-card>
   </v-container>
 </template>
 
@@ -241,7 +315,7 @@ import {
   setInteractionMode,
 } from "vee-validate";
 
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
@@ -279,8 +353,22 @@ export default {
   computed: {
     ...mapState("usuarios", ["usuario"]),
     ...mapState("empresas", ["empresa"]),
+    ...mapState("ubicacion", ["regiones"]),
+    ...mapState("ubicacion", ["comunas"]),
+    ...mapGetters("ubicacion", ["nombreRegion"]),
   },
   methods: {
+    ...mapActions("ubicacion", ["obtenerComunas"]),
+
+    comuna() {
+      const region = this.empresa.data.region;
+      const regiones = this.regiones;
+      const total = regiones.find((item) => {
+        return item.nombre == region;
+      });
+
+      this.obtenerComunas(total.codigo);
+    },
     submit() {
       this.$refs.observer.validate();
       this.editarEmpresa();
@@ -328,6 +416,7 @@ export default {
           instagram: empresa.instagram,
           facebook: empresa.facebook,
           twitter: empresa.twitter,
+          web: empresa.web,
 
           imagen: empresa.imagen,
 

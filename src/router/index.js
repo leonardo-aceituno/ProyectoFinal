@@ -31,6 +31,11 @@ const routes = [
     component: () => import("@/components/empresas/EditarEmpresa.vue"),
   },
   {
+    path: "/eliminarempresa",
+    name: "eliminar",
+    component: () => import("@/components/empresas/EliminarEmpresa.vue"),
+  },
+  {
     path: "/empresas",
     name: "empresas",
     component: () => import("../views/Empresas.vue"),

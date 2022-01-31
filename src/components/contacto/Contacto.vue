@@ -7,6 +7,7 @@
           <!-- Te ayudamos a disponibilizar tus ideas en la Web!!! -->
         </h4>
       </v-col>
+
       <v-col cols="12" xs="10" sm="8" md="4">
         <v-container class="mx-auto">
           <validation-observer ref="observer" v-slot="{ invalid }">

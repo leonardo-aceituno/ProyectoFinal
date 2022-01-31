@@ -16,6 +16,7 @@ npm install sweetalert --save
 npm install --save vue-swal
 npm install --save vuex-persistedstate
 npm i vee-validate --save
+npm install axios --save
 
 ## Dependencias Pendientes:
 

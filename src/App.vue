@@ -18,8 +18,13 @@ export default {
   data: () => ({}),
   created() {
     this.obtenerEmpresas();
+    this.obtenerRegiones();
+    console.log(this.obtenerRegiones());
   },
-  methods: { ...mapActions("empresas", ["obtenerEmpresas"]) },
+  methods: {
+    ...mapActions("empresas", ["obtenerEmpresas"]),
+    ...mapActions("ubicacion", ["obtenerRegiones"]),
+  },
 };
 </script>
 

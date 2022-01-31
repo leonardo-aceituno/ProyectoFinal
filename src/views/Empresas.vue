@@ -8,7 +8,7 @@
       </v-col>
     </v-row>
 
-    <v-container class="mt-15">
+    <v-container class="my-15">
       <v-row>
         <v-col
           xs="6"
