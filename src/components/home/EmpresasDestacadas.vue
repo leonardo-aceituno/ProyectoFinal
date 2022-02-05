@@ -1,41 +1,43 @@
 <template>
-  <v-container id="EmpresasDestacadas" class="my-15">
-    <h2 class="text-h4 text-center blue-grey--text text--darken-4 mb-15">
-      Empresas Destacadas
-    </h2>
+  <div id="empresasDestacadas" class="mb-15">
+    <v-card flat class="d-flex flex-column align-center justify-center py-10">
+      <v-card-title class="size32"> Empresas Destacadas </v-card-title>
+    </v-card>
 
-    <v-row class="mt-5">
-      <v-col
-        xs="6"
-        sm="4"
-        md="4"
-        v-for="(item, index) in empresasDestacadas"
-        :key="index"
-      >
-        <Card :item="item" />
-      </v-col>
-    </v-row>
+    <v-container>
+      <v-row class="my-5">
+        <v-col
+          xs="6"
+          sm="4"
+          md="3"
+          v-for="(item, index) in empresasDestacadas"
+          :key="index"
+        >
+          <Card :item="item" />
+        </v-col>
+      </v-row>
 
-    <div class="mt-15 d-flex justify-center">
-      <v-btn color="blue-grey darken-4" outlined large to="/empresas">
-        Ver todas las Empresas
-      </v-btn>
-    </div>
-  </v-container>
+      <div class="d-flex justify-center mt-15">
+        <v-btn class="" color="#0F85D1" dark large to="/empresas">
+          Ver todas las Empresas
+        </v-btn>
+      </div>
+    </v-container>
+  </div>
 </template>
 
 <script>
-import Card from "@/components/card/Card";
-import { mapGetters } from "vuex";
+import Card from '@/components/card/Card';
+import { mapGetters } from 'vuex';
 
 export default {
-  name: "EmpresasDestacadas",
+  name: 'EmpresasDestacadas',
   components: { Card },
   data() {
     return { model: true };
   },
   computed: {
-    ...mapGetters("empresas", ["empresasDestacadas"]),
+    ...mapGetters('empresas', ['empresasDestacadas']),
   },
 };
 </script>

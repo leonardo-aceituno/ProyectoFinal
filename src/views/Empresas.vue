@@ -1,15 +1,12 @@
 <template>
-  <section>
-    <v-row justify="center" class="pt-8 blue-grey darken-4">
-      <v-col md="6" class="d-flex justify-center">
-        <h1 class="text-center blue-grey--text text--lighten-5" dark>
-          EMPRESAS
-        </h1>
-      </v-col>
-    </v-row>
+  <div id="empresas">
+    <v-card flat class="d-flex justify-center my-1 py-2">
+      <v-card-title class="size32"> Empresas </v-card-title>
+    </v-card>
 
-    <v-container class="my-15">
-      <v-row>
+    <v-container>
+      <!-- <h1 class="text-center titulo pt-15">EMPRESAS</h1> -->
+      <v-row class="my-10">
         <v-col
           xs="6"
           sm="4"
@@ -21,25 +18,29 @@
         </v-col>
       </v-row>
     </v-container>
-  </section>
+  </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
-import Card from "@/components/card/Card";
+import { mapState, mapGetters } from 'vuex';
+import Card from '@/components/card/Card';
 
 export default {
-  name: "Empresas",
+  name: 'Empresas',
   components: { Card },
   data() {
     return {};
   },
   computed: {
-    ...mapState("empresas", ["empresas"]),
-    ...mapGetters("empresas", ["empresasActivas"]),
+    ...mapState('empresas', ['empresas']),
+    ...mapGetters('empresas', ['empresasActivas']),
   },
   methods: {},
 };
 </script>
 
-<style></style>
+<style scoped>
+.color-fondo {
+  /* background-color: #fc6800; */
+}
+</style>

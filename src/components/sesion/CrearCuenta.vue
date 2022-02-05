@@ -1,5 +1,5 @@
 <template>
-  <v-container class="mt-5">
+  <div id="crearCuenta" class="my-10">
     <validation-observer ref="observer" v-slot="{ invalid }">
       <form @submit.prevent="submit">
         <validation-provider
@@ -12,7 +12,8 @@
             :error-messages="errors"
             label="E-mail"
             required
-            outlined
+            solo
+            prepend-inner-icon="mdi-email"
           ></v-text-field>
         </validation-provider>
 
@@ -27,80 +28,80 @@
             :error-messages="errors"
             label="Password"
             required
-            outlined
             tile
             :type="show ? 'text' : 'password'"
             :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
             @click:append="show = !show"
+            solo
+            prepend-inner-icon="mdi-lock"
           ></v-text-field>
         </validation-provider>
 
         <v-btn
-          class="mr-4"
+          class="mt-5 boton"
           type="submit"
           :disabled="invalid"
           block
-          color="success"
-          light
+          color="#FF6530"
         >
           Registrar
         </v-btn>
       </form>
     </validation-observer>
-  </v-container>
+  </div>
 </template>
 
 <script>
-import { required, email, max, min } from "vee-validate/dist/rules";
+import { required, email, max, min } from 'vee-validate/dist/rules';
 import {
   extend,
   ValidationObserver,
   ValidationProvider,
   setInteractionMode,
-} from "vee-validate";
+} from 'vee-validate';
 
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex';
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
-setInteractionMode("eager");
+setInteractionMode('eager');
 
-extend("required", {
+extend('required', {
   ...required,
-  message: "{_field_} es obligatorio",
+  message: '{_field_} es obligatorio',
 });
 
-extend("max", {
+extend('max', {
   ...max,
-  message: "{_field_} debe tener maximo {length} caracteneres",
+  message: '{_field_} debe tener maximo {length} caracteneres',
 });
 
-extend("min", {
+extend('min', {
   ...min,
-  message: "{_field_} debe tener a lo menos {length} caracteres",
+  message: '{_field_} debe tener a lo menos {length} caracteres',
 });
 
-extend("email", {
+extend('email', {
   ...email,
-  message: "El Email debe ser válido",
+  message: 'El Email debe ser válido',
 });
 
 export default {
-  name: "sessionForm",
+  name: 'sessionForm',
   components: {
     ValidationProvider,
     ValidationObserver,
   },
   data: () => ({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
     show: false,
   }),
   computed: {
-    ...mapState("usuarios", ["usuario"]),
+    ...mapState('usuarios', ['usuario']),
   },
   methods: {
-    ...mapActions("usuarios", ["actualizarUsuario"]),
+    ...mapActions('usuarios', ['actualizarUsuario']),
 
     submit() {
       this.$refs.observer.validate();
@@ -109,27 +110,27 @@ export default {
 
     redirect() {
       //   this.$router.push({ name: "crear" });
-      this.$router.push({ name: "dashboard" });
+      this.$router.push({ name: 'dashboard' });
     },
 
     mensaje() {
       this.$swal({
-        title: "Bienvenido",
-        text: "Cuenta creada con Exito!",
-        icon: "success",
+        title: 'Bienvenido',
+        text: 'Cuenta creada con Exito!',
+        icon: 'success',
         buttons: false,
         timer: 2000,
       });
     },
 
     clear() {
-      this.email = "";
-      this.password = "";
+      this.email = '';
+      this.password = '';
       this.$refs.observer.reset();
     },
 
     async iniciarSesion() {
-      console.log("Crear Cuenta");
+      console.log('Crear Cuenta');
       const auth = getAuth();
 
       try {
@@ -149,4 +150,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.boton {
+  color: #ffffff !important;
+}
+</style>

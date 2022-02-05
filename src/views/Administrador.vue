@@ -1,11 +1,13 @@
 <template>
-  <v-container class="mt-10">
-    <h1 class="text-center text-h4 font-weight-light">Mi Cuenta</h1>
+  <div>
+    <v-card flat class="d-flex justify-center my-1 py-2">
+      <v-card-title class="size32"> Mi Cuenta </v-card-title>
+    </v-card>
 
-    <v-row justify="center" no-gutters class="mt-5">
-      <v-col xs="10" sm="8" md="6" class="mb-6">
-        <v-tabs centered>
-          <v-tabs-slider></v-tabs-slider>
+    <v-row justify="center" no-gutters class="my-12">
+      <v-col xs="10" sm="8" md="4" class="mb-6">
+        <v-tabs centered class="mb-5" background-color="#fbfbfb">
+          <v-tabs-slider color="#FF7D30"></v-tabs-slider>
           <v-tab @click="show = true">Iniciar Sesión </v-tab>
           <v-tab @click="show = false">Crear Cuenta</v-tab>
         </v-tabs>
@@ -17,15 +19,15 @@
         </template>
       </v-col>
     </v-row>
-  </v-container>
+  </div>
 </template>
 
 <script>
-import IniciarSesion from "@/components/sesion/IniciarSesion";
-import CrearCuenta from "@/components/sesion/CrearCuenta";
+import IniciarSesion from '@/components/sesion/IniciarSesion';
+import CrearCuenta from '@/components/sesion/CrearCuenta';
 
 export default {
-  name: "Administrador",
+  name: 'Administrador',
   components: { IniciarSesion, CrearCuenta },
   data() {
     return { show: true };
@@ -34,4 +36,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.titulo {
+  font-size: 1.875rem;
+  color: #ffffff;
+  font-weight: normal;
+}
+</style>

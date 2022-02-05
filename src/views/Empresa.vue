@@ -1,21 +1,19 @@
 <template>
-  <section>
-    <v-row justify="center" class="pt-8 blue-grey darken-4">
-      <v-col md="6" class="d-flex justify-center">
-        <h1 class="text-center blue-grey--text text--lighten-5" dark>
-          {{ empresa.data.nombre }}
-        </h1>
-      </v-col>
-    </v-row>
+  <div id="empresa">
+    <v-card flat class="d-flex justify-center my-1 py-2">
+      <v-card-title class="titulo size32">
+        {{ empresa.data.nombre }}
+      </v-card-title>
+    </v-card>
 
-    <v-container class="my-15">
-      <v-row>
+    <v-container>
+      <v-row class="my-5">
         <!-- COLUMNA IZQUIERDA -->
         <v-col cols="12" sm="7" md="8">
           <v-container>
             <v-row>
               <v-col cols="12" class="d-flex justify-center">
-                <v-avatar class="ma-3" size="250" tile>
+                <v-avatar class="ma-3" size="200" tile>
                   <v-img :src="empresa.data.imagen" contain></v-img>
                 </v-avatar>
               </v-col>
@@ -101,28 +99,28 @@
                 </div>
                 <div>
                   <v-btn x-small color="#3b5998" dark href="" target="_blank">
-                    <v-icon size="13" class="pe-1">mdi-facebook</v-icon>
-                    Facebook
+                    <v-icon size="13" class="pe-0">mdi-facebook</v-icon>
+                    <span class="size08">Facebook</span>
                   </v-btn>
                 </div>
 
                 <div>
                   <v-btn x-small color="#007bb5" dark href="" target="_blank">
-                    <v-icon size="13" class="pe-1">mdi-linkedin</v-icon>
-                    LinkedIn
+                    <v-icon size="13" class="pe-0">mdi-linkedin</v-icon>
+                    <span class="size08">linkedin</span>
                   </v-btn>
                 </div>
 
                 <div>
                   <v-btn x-small color="#4dc247" dark href="" target="_blank">
-                    <v-icon size="13" class="pe-1">mdi-whatsapp</v-icon>
-                    Whatsapp
+                    <v-icon size="13" class="pe-0">mdi-whatsapp</v-icon>
+                    <span class="size08">whatsapp</span>
                   </v-btn>
                 </div>
               </v-col>
 
-              <v-col cols="12" class="mt-10">
-                <v-btn color="blue-grey darken-4" block dark
+              <v-col cols="12" class="my-10">
+                <v-btn color="#E49F06" block dark @click="enviarComentario"
                   >Enviar mensaje</v-btn
                 >
               </v-col>
@@ -131,21 +129,30 @@
         </v-col>
       </v-row>
     </v-container>
-  </section>
+  </div>
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from "vuex";
+import { mapState, mapActions, mapGetters } from 'vuex';
 export default {
-  name: "Empresa",
+  name: 'Empresa',
   data() {
     return {};
   },
   computed: {
-    ...mapState("usuarios", ["usuario"]),
-    ...mapState("empresas", ["empresa"]),
+    ...mapState('usuarios', ['usuario']),
+    ...mapState('empresas', ['empresa']),
+  },
+  methods: {
+    ...mapActions('mensajes', ['actualizaEmpresaContacto']),
+
+    enviarComentario() {
+      const identificador = this.empresa.data.key;
+      this.actualizaEmpresaContacto(identificador);
+      this.$router.push({ name: 'contacto' });
+    },
   },
 };
 </script>
 
-<style></style>
+<style scoped></style>
