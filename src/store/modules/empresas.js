@@ -67,7 +67,17 @@ const getters = {
     const unicos = usuarios.filter((item, index) => {
       return usuarios.indexOf(item) === index;
     });
+    console.log('unicos', unicos);
     return unicos.length;
+  },
+
+  buscaEmpresa: (state) => (region) => {
+    if (region == 'Todas') region = '';
+    console.log('aca region', region);
+    return state.empresas.filter(
+      (item) => item.data.region.includes(region) && item.data.activo == true
+      // ||         item.data.nombre.toLowerCase().includes(nombre)
+    );
   },
 };
 

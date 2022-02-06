@@ -27,7 +27,7 @@ import { mapState, mapActions, mapGetters } from 'vuex';
 export default {
   name: 'mensajes',
   data() {
-    return {};
+    return { hola: true };
   },
   computed: {
     ...mapState('usuarios', ['usuario']),
