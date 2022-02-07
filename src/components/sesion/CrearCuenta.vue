@@ -8,6 +8,7 @@
           rules="required|email"
         >
           <v-text-field
+            id="email"
             v-model="email"
             :error-messages="errors"
             label="E-mail"
@@ -23,6 +24,7 @@
           rules="required|min:6|max:20 "
         >
           <v-text-field
+            id="password"
             v-model="password"
             :counter="20"
             :error-messages="errors"

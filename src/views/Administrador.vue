@@ -9,7 +9,7 @@
         <v-tabs centered class="mb-5" background-color="#fbfbfb">
           <v-tabs-slider color="#FF7D30"></v-tabs-slider>
           <v-tab @click="show = true">Iniciar Sesión </v-tab>
-          <v-tab @click="show = false">Crear Cuenta</v-tab>
+          <v-tab id="crearcuenta" @click="show = false">Crear Cuenta</v-tab>
         </v-tabs>
         <template v-if="show">
           <IniciarSesion />
