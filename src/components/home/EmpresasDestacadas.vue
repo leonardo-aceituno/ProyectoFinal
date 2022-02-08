@@ -1,6 +1,6 @@
 <template>
   <div id="empresasDestacadas" class="mb-15">
-    <v-card flat class="d-flex flex-column align-center justify-center py-10">
+    <v-card flat class="d-flex flex-column align-center justify-center py-5">
       <v-card-title class="size32"> Empresas Destacadas </v-card-title>
     </v-card>
 

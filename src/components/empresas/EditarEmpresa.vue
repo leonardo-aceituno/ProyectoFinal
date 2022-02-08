@@ -261,7 +261,8 @@
               <!-- Configuracion -->
               <div class="my-5 espacio">Configuración</div>
               <v-row>
-                <v-col>
+                {{ empresa.data.key }} - {{ administrador }}
+                <v-col v-if="empresa.data.key == administrador">
                   <v-switch
                     v-model="empresa.data.destacado"
                     inset
@@ -353,6 +354,7 @@ export default {
     ...mapState('ubicacion', ['regiones']),
     ...mapState('ubicacion', ['comunas']),
     ...mapGetters('ubicacion', ['nombreRegion']),
+    ...mapState(['administrador']),
   },
   methods: {
     ...mapActions('ubicacion', ['obtenerComunas']),

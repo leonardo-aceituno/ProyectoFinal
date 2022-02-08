@@ -18,6 +18,7 @@
                     rules="required"
                   >
                     <v-text-field
+                      id="nombre"
                       v-model="empresa.nombre"
                       :error-messages="errors"
                       label="Nombre"
@@ -36,6 +37,7 @@
                     rules="required"
                   >
                     <v-text-field
+                      id="categoria"
                       v-model="empresa.categoria"
                       :error-messages="errors"
                       label="Categoria"
@@ -53,7 +55,8 @@
                     name="region"
                     rules="required"
                   >
-                    <v-select
+                    <!-- <v-select
+                      id="region"
                       v-model="empresa.region"
                       :items="nombreRegion"
                       :error-messages="errors"
@@ -64,7 +67,21 @@
                       @change="comuna"
                       prepend-inner-icon="mdi-map-marker"
                       background-color="white"
-                    ></v-select>
+                    ></v-select> -->
+
+                    <v-autocomplete
+                      id="region"
+                      v-model="empresa.region"
+                      :items="nombreRegion"
+                      :error-messages="errors"
+                      label="Region"
+                      required
+                      outlined
+                      dense
+                      @change="comuna"
+                      prepend-inner-icon="mdi-map-marker"
+                      background-color="white"
+                    ></v-autocomplete>
                   </validation-provider>
                 </v-col>
 
@@ -74,7 +91,7 @@
                     name="comuna"
                     rules="required"
                   >
-                    <v-select
+                    <!-- <v-select
                       v-model="empresa.comuna"
                       :items="comunas"
                       :error-messages="errors"
@@ -83,7 +100,19 @@
                       outlined
                       dense
                       prepend-inner-icon="mdi-map-marker"
-                    ></v-select>
+                    ></v-select> -->
+
+                    <v-autocomplete
+                      id="comuna"
+                      v-model="empresa.comuna"
+                      :items="comunas"
+                      :error-messages="errors"
+                      label="Comuna"
+                      required
+                      outlined
+                      dense
+                      prepend-inner-icon="mdi-map-marker"
+                    ></v-autocomplete>
                   </validation-provider>
                 </v-col>
 
@@ -94,6 +123,7 @@
                     rules="required"
                   >
                     <v-textarea
+                      id="descripcion"
                       v-model="empresa.descripcion"
                       :error-messages="errors"
                       label="Descripción"
@@ -117,6 +147,7 @@
                     rules="required"
                   >
                     <v-text-field
+                      id="responsable"
                       v-model="empresa.responsable"
                       :error-messages="errors"
                       label="Nombre"
@@ -136,6 +167,7 @@
                     rules="required|email"
                   >
                     <v-text-field
+                      id="email"
                       v-model="empresa.email"
                       :error-messages="errors"
                       label="E-mail"
@@ -155,6 +187,7 @@
                     rules="required"
                   >
                     <v-text-field
+                      id="telefono"
                       v-model="empresa.telefono"
                       :error-messages="errors"
                       label="Telefono"
@@ -174,6 +207,7 @@
                 <v-col cols="12">
                   <validation-provider v-slot="{ errors }" name="instagram">
                     <v-text-field
+                      id="instagram"
                       v-model="empresa.instagram"
                       :error-messages="errors"
                       label="Instagram"
@@ -186,6 +220,7 @@
                 <v-col cols="12" class="mt-n7">
                   <validation-provider v-slot="{ errors }" name="facebook">
                     <v-text-field
+                      id="facebook"
                       v-model="empresa.facebook"
                       :error-messages="errors"
                       label="Facebook"
@@ -198,6 +233,7 @@
                 <v-col cols="12" class="mt-n7">
                   <validation-provider v-slot="{ errors }" name="twitter">
                     <v-text-field
+                      id="twitter"
                       v-model="empresa.twitter"
                       :error-messages="errors"
                       label="Twitter"
@@ -210,6 +246,7 @@
                 <v-col cols="12" class="mt-n7">
                   <validation-provider v-slot="{ errors }" name="web">
                     <v-text-field
+                      id="web"
                       v-model="empresa.web"
                       :error-messages="errors"
                       label="Web"
@@ -231,6 +268,7 @@
                     rules="required"
                   >
                     <v-text-field
+                      id="imagen"
                       v-model="empresa.imagen"
                       :error-messages="errors"
                       label="Url imagen logo"
@@ -249,7 +287,7 @@
               <!-- Configuracion -->
               <div class="my-5 espacio">Configuración</div>
               <v-row>
-                <v-col>
+                <v-col v-if="empresa.key == administrador">
                   <v-switch
                     v-model="empresa.destacado"
                     inset
@@ -268,6 +306,7 @@
 
             <div class="mt-15 d-flex justify-center justify-md-end">
               <v-btn
+                id="btn-crear"
                 type="submit"
                 color="#E49F06 "
                 class="mr-0 boton"
@@ -349,7 +388,7 @@ export default {
       imagen: '',
 
       destacado: false,
-      activo: true,
+      activo: false,
     },
     show: false,
   }),
@@ -358,11 +397,13 @@ export default {
     ...mapState('ubicacion', ['regiones']),
     ...mapState('ubicacion', ['comunas']),
     ...mapGetters('ubicacion', ['nombreRegion']),
+    ...mapState(['administrador']),
   },
   methods: {
     ...mapActions('ubicacion', ['obtenerComunas']),
 
     comuna() {
+      console.log(this.empresa.region);
       const region = this.empresa.region;
       const regiones = this.regiones;
       const total = regiones.find((item) => {

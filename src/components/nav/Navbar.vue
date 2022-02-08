@@ -1,7 +1,7 @@
 <template>
   <nav class="nav">
     <!-- <v-app-bar app class="blue-grey darken-4 text-center" dark flat> -->
-    <v-app-bar app class="text-center" dark flat color="#3499DB">
+    <v-app-bar class="text-center" dark flat color="#3499DB">
       <v-app-bar-nav-icon class="hidden-sm-and-up" @click="drawer = !drawer">
       </v-app-bar-nav-icon>
 
@@ -13,12 +13,20 @@
 
       <v-toolbar-items class="hidden-xs-only">
         <v-list-item-icon>
-          <v-btn text to="/">inicio </v-btn>
-          <v-btn text to="/empresas">Empresas </v-btn>
-          <v-btn text @click="enviarComentario">Contacto </v-btn>
+          <v-btn :ripple="ripple" text to="/">inicio </v-btn>
+          <v-btn :ripple="ripple" text to="/empresas">Empresas </v-btn>
+          <v-btn :ripple="ripple" text @click="enviarComentario"
+            >Contacto
+          </v-btn>
           <v-divider vertical></v-divider>
-          <v-btn class="texto-boton" v-if="!usuario" text to="/administrador"
-            >Publica tu Empresa</v-btn
+          <v-btn
+            :ripple="{ center: true }"
+            class="botonEmpresas"
+            v-if="!usuario"
+            text
+            to="/administrador"
+          >
+            Empresa</v-btn
           >
           <v-btn v-if="usuario" text to="/dashboard">Mi Cuenta</v-btn>
           <v-btn v-if="usuario" text @click="cerrarSesion">Salir</v-btn>
@@ -89,7 +97,7 @@ import { getAuth, signOut } from 'firebase/auth';
 export default {
   name: 'Navbar',
   data() {
-    return { drawer: false, group: null };
+    return { drawer: false, group: null, ripple: false };
   },
   computed: {
     ...mapState('usuarios', ['usuario']),
@@ -134,9 +142,16 @@ export default {
 .font-Architects {
   font-family: 'Architects Daughter', cursive;
 }
+.v-btn::before {
+  background-color: transparent;
+}
 
-.texto-boton {
-  color: #ffbf30 !important;
+.v-btn:hover {
+  color: #000000 !important;
   font-weight: bold;
+}
+
+.botonEmpresas {
+  background-color: #ff7d30;
 }
 </style>

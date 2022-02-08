@@ -22,7 +22,7 @@
             text
             x-small
             @click="select = ''"
-            >deshacer filtro
+            >Borrar filtro
           </v-btn>
         </div>
       </div>
