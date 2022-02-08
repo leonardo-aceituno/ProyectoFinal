@@ -13,12 +13,11 @@
 
     <v-row align="center" justify="center" class="my-5" dark>
       <v-col cols="12" xs="10" sm="8" md="4">
-        <span class="size32 text-center text-sm-left">¿Alguna Duda?</span>
-        <br />
-        <span class="text-center text-sm-left"
-          >Por cualquier consulta, nos puede escribir a través del formulario de
-          la página web</span
-        >
+        <p class="size32 text-center text-sm-left">¿Alguna Duda?</p>
+        <p class="text-center text-sm-left">
+          Por cualquier consulta, nos puede escribir a través del formulario de
+          la página web
+        </p>
         <!-- <h1 class="text-center text-sm-left">¿Alguna Duda?</h1>
 
         <h4 class="text-center text-sm-left">
