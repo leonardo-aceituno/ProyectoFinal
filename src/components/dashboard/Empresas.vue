@@ -29,116 +29,116 @@
           </v-card-subtitle>
           <v-card-text v-text="item.data.descripcion"></v-card-text>
 
-          <v-card-actions>
-            <v-btn
-              v-if="item.data.instagram != ''"
-              class="ml-2 mt-3"
-              fab
-              icon
-              height="40px"
-              right
-              width="40px"
-            >
-              <v-icon>mdi-instagram</v-icon>
-            </v-btn>
-
-            <v-btn
-              v-if="item.data.facebook != ''"
-              class="ml-2 mt-3"
-              fab
-              icon
-              height="40px"
-              right
-              width="40px"
-            >
-              <v-icon>mdi-facebook</v-icon>
-            </v-btn>
-
-            <v-btn
-              v-if="item.data.twitter != ''"
-              class="ml-2 mt-3"
-              fab
-              icon
-              height="40px"
-              right
-              width="40px"
-            >
-              <v-icon>mdi-twitter</v-icon>
-            </v-btn>
-
-            <v-btn
-              v-if="item.data.web != ''"
-              class="ml-2 mt-3"
-              fab
-              icon
-              height="40px"
-              right
-              width="40px"
-            >
-              <v-icon>mdi-web</v-icon>
-            </v-btn>
-
-            <div>
-              <v-btn
-                v-if="item.data.destacado == true"
-                class="ml-2 mt-3"
-                fab
-                icon
-                height="40px"
-                right
-                width="40px"
-              >
-                <v-icon>mdi-star</v-icon>
-              </v-btn>
-
-              <v-btn
-                v-else
-                class="ml-2 mt-3"
-                fab
-                icon
-                height="40px"
-                right
-                width="40px"
-              >
-                <v-icon>mdi-star-outline</v-icon>
-              </v-btn>
-            </div>
-
+          <v-card-actions class="d-flex justify-end">
             <div>
               <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn
-                    v-if="item.data.activo == true"
+                  <v-icon
+                    v-if="item.data.instagram != ''"
+                    size="28"
                     v-bind="attrs"
                     v-on="on"
-                    class="ml-2 mt-3"
-                    fab
-                    icon
-                    height="40px"
-                    right
-                    width="40px"
+                    class="ps-1"
+                    >mdi-instagram</v-icon
                   >
-                    <v-icon>mdi-checkbox-marked-circle</v-icon>
-                  </v-btn>
+                </template>
+                <span>{{ item.data.instagram }}</span>
+              </v-tooltip>
+
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-icon
+                    v-if="item.data.facebook != ''"
+                    size="28"
+                    v-bind="attrs"
+                    v-on="on"
+                    class="ps-1"
+                    >mdi-facebook</v-icon
+                  >
+                </template>
+                <span>{{ item.data.facebook }}</span>
+              </v-tooltip>
+
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-icon
+                    v-if="item.data.twitter != ''"
+                    size="28"
+                    v-bind="attrs"
+                    v-on="on"
+                    class="ps-1"
+                    >mdi-twitter</v-icon
+                  >
+                </template>
+                <span>{{ item.data.twitter }}</span>
+              </v-tooltip>
+
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-icon
+                    v-if="item.data.web != ''"
+                    size="28"
+                    v-bind="attrs"
+                    v-on="on"
+                    class="ps-1"
+                    >mdi-web</v-icon
+                  >
+                </template>
+                <span>{{ item.data.web }}</span>
+              </v-tooltip>
+
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-icon
+                    v-if="item.data.destacado == true"
+                    size="28"
+                    v-bind="attrs"
+                    v-on="on"
+                    class="ps-1"
+                    >mdi-star</v-icon
+                  >
+                </template>
+                <span>Destacado</span>
+              </v-tooltip>
+
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-icon
+                    v-if="item.data.destacado == false"
+                    size="28"
+                    v-bind="attrs"
+                    v-on="on"
+                    class="ps-1"
+                    >mdi-star-outline</v-icon
+                  >
+                </template>
+                <span>No Destacado</span>
+              </v-tooltip>
+
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-icon
+                    v-if="item.data.activo == true"
+                    size="28"
+                    v-bind="attrs"
+                    v-on="on"
+                    class="ps-1"
+                    >mdi-checkbox-marked-circle</v-icon
+                  >
                 </template>
                 <span>Activado</span>
               </v-tooltip>
 
               <v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn
+                  <v-icon
                     v-if="item.data.activo == false"
+                    size="28"
                     v-bind="attrs"
                     v-on="on"
-                    class="ml-2 mt-3"
-                    fab
-                    icon
-                    height="40px"
-                    right
-                    width="40px"
+                    class="ps-1"
+                    >mdi-radiobox-blank</v-icon
                   >
-                    <v-icon>mdi-radiobox-blank</v-icon>
-                  </v-btn>
                 </template>
                 <span>Desactivado</span>
               </v-tooltip>
@@ -151,13 +151,28 @@
           md="1"
           class="d-flex flex-md-column justify-end justify-md-start align-center order-0 order-sm-0 order-md-2"
         >
-          <v-btn icon @click="editarEmpresa(item)">
-            <v-icon color="grey lighten-1">mdi-pencil</v-icon>
-          </v-btn>
+          <v-tooltip left>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon v-bind="attrs" v-on="on" @click="editarEmpresa(item)">
+                <v-icon color="grey lighten-1">mdi-pencil</v-icon>
+              </v-btn>
+            </template>
+            <span>Editar</span>
+          </v-tooltip>
 
-          <v-btn icon @click="eliminarEmpresa(item)">
-            <v-icon color="grey lighten-1">mdi-delete</v-icon>
-          </v-btn>
+          <v-tooltip left>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                icon
+                v-bind="attrs"
+                v-on="on"
+                @click="eliminarEmpresa(item)"
+              >
+                <v-icon color="grey lighten-1">mdi-delete</v-icon>
+              </v-btn>
+            </template>
+            <span>Eliminar</span>
+          </v-tooltip>
         </v-col>
       </v-row>
     </v-card>
@@ -165,26 +180,26 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from "vuex";
+import { mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
-  name: "Empresas",
+  name: 'Empresas',
   data() {
     return {};
   },
   computed: {
-    ...mapState("usuarios", ["usuario"]),
-    ...mapState("empresas", ["empresas"]),
-    ...mapState("mensajes", ["mensajes"]),
+    ...mapState('usuarios', ['usuario']),
+    ...mapState('empresas', ['empresas']),
+    ...mapState('mensajes', ['mensajes']),
   },
   methods: {
-    ...mapActions("empresas", ["guardarEmpresa"]),
+    ...mapActions('empresas', ['guardarEmpresa']),
 
     buscaEmpresa() {
       const identificador = this.usuario.uid;
       const empresas = this.empresas;
 
-      if (identificador == "7JnMLUZHvEhrx6wTCYSCzlrqzyC2") {
+      if (identificador == '7JnMLUZHvEhrx6wTCYSCzlrqzyC2') {
         return empresas;
       } else {
         return empresas.filter((item) => {
@@ -194,14 +209,14 @@ export default {
     },
 
     editarEmpresa(item) {
-      console.log("aqui se edita", item);
+      console.log('aqui se edita', item);
       this.guardarEmpresa(item);
-      this.$router.push({ name: "editar" });
+      this.$router.push({ name: 'editar' });
     },
 
     eliminarEmpresa(item) {
       this.guardarEmpresa(item);
-      this.$router.push({ name: "eliminar" });
+      this.$router.push({ name: 'eliminar' });
     },
   },
 };

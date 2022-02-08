@@ -49,7 +49,32 @@ export default {
 .size30 {
   font-size: 1.875rem;
 }
+
+.size24 {
+  font-size: 1.5rem;
+}
+
+.size20 {
+  font-size: 1.25rem;
+}
+
+.size14 {
+  font-size: 0.875rem;
+}
+
+.size12 {
+  font-size: 0.75rem;
+}
+
+.size10 {
+  font-size: 0.625rem;
+}
+
 .size08 {
   font-size: 0.563rem;
+}
+
+.bold {
+  font-weight: bold;
 }
 </style>

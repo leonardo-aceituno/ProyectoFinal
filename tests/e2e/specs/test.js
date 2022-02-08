@@ -91,7 +91,7 @@ describe('Testing my App', () => {
     cy.get('#btn-crear').click();
 
     // --------> CERRAR SESION <------------
-    logout();
+    // logout();
   });
 
   // const loginAdmin = () => {

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <v-card flat tile width="100%" class="text-center py-3" color="#EEEEEE">
+  <div class="mt-15">
+    <v-card flat tile width="100%" class="text-center py-2" color="#EEEEEE">
       <v-card-text>
         <v-btn v-for="icon in icons" :key="icon" class="mx-4" icon>
           <v-icon size="32px" color="#000000">

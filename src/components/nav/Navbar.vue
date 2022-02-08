@@ -152,6 +152,6 @@ export default {
 }
 
 .botonEmpresas {
-  background-color: #ff7d30;
+  background-color: #ff8459;
 }
 </style>

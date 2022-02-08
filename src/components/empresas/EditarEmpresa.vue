@@ -261,7 +261,6 @@
               <!-- Configuracion -->
               <div class="my-5 espacio">Configuración</div>
               <v-row>
-                {{ empresa.data.key }} - {{ administrador }}
                 <v-col v-if="empresa.data.key == administrador">
                   <v-switch
                     v-model="empresa.data.destacado"

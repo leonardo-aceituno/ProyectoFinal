@@ -13,12 +13,18 @@
 
     <v-row align="center" justify="center" class="my-5" dark>
       <v-col cols="12" xs="10" sm="8" md="4">
-        <h1 class="text-center text-sm-left">¿Alguna Duda?</h1>
+        <span class="size32 text-center text-sm-left">¿Alguna Duda?</span>
+        <br />
+        <span class="text-center text-sm-left"
+          >Por cualquier consulta, nos puede escribir a través del formulario de
+          la página web</span
+        >
+        <!-- <h1 class="text-center text-sm-left">¿Alguna Duda?</h1>
 
         <h4 class="text-center text-sm-left">
           Por cualquier consulta, nos puede escribir a través del formulario de
           la página web
-        </h4>
+        </h4> -->
       </v-col>
 
       <v-col cols="12" xs="10" sm="8" md="4">
@@ -78,7 +84,7 @@
                 ></v-textarea>
               </validation-provider>
 
-              <v-btn color="#FFCA56" type="submit" :disabled="invalid" block>
+              <v-btn color="#FFD459" type="submit" :disabled="invalid" block>
                 Enviar
               </v-btn>
               <!-- <v-btn @click="clear"> clear </v-btn> -->

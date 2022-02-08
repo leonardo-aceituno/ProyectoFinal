@@ -2,11 +2,11 @@
   <div class="py-7 colorFondo">
     <div class="d-flex flex-column flex-sm-row justify-sm-space-around">
       <div class="align-center d-none d-sm-flex">
-        <strong class="pe-5 titulo">¿Tienes una Empresa? </strong> Déjame ver si
-        puedo ayudar.
+        <strong class="pe-5 size20 bold">¿Tienes una Empresa? </strong> Déjame
+        ver si puedo ayudar.
       </div>
 
-      <v-btn class="" color="#FFBF30" light large @click="enviarComentario">
+      <v-btn class="" color="#3D9BE9" dark large @click="enviarComentario">
         Contacto
       </v-btn>
     </div>
@@ -39,10 +39,5 @@ export default {
 <style scoped>
 .colorFondo {
   background-color: #ffffff;
-}
-
-.titulo {
-  color: #000000;
-  font-size: 1.25rem;
 }
 </style>

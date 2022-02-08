@@ -43,23 +43,23 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from "vuex";
-import { getFirestore, doc, deleteDoc } from "firebase/firestore";
+import { mapState, mapActions, mapGetters } from 'vuex';
+import { getFirestore, doc, deleteDoc } from 'firebase/firestore';
 
 export default {
-  name: "Eliminar-Producto",
+  name: 'Eliminar-Producto',
   data() {
     return {
       dialogDelete: false,
-      eliminaProducto: "",
+      eliminaProducto: '',
     };
   },
-  computed: { ...mapState("empresas", ["empresa"]) },
+  computed: { ...mapState('empresas', ['empresa']) },
   methods: {
-    ...mapActions("empresas", ["guardarEmpresa"]),
+    ...mapActions('empresas', ['guardarEmpresa']),
     salir() {
       this.guardarEmpresa(null);
-      this.$router.push({ name: "dashboard" });
+      this.$router.push({ name: 'dashboard' });
     },
 
     eliminar() {
@@ -67,14 +67,14 @@ export default {
     },
 
     redirect() {
-      this.$router.push({ name: "dashboard" });
+      this.$router.push({ name: 'dashboard' });
     },
 
     mensaje() {
       this.$swal({
-        title: "",
-        text: "Empresa Eliminada",
-        icon: "success",
+        title: '',
+        text: 'Empresa Eliminada',
+        icon: 'success',
         buttons: false,
         timer: 2000,
       });
@@ -90,7 +90,7 @@ export default {
 
     async eliminarProducto(identificador) {
       const db = getFirestore();
-      await deleteDoc(doc(db, "empresas", identificador));
+      await deleteDoc(doc(db, 'empresas', identificador));
     },
   },
 };

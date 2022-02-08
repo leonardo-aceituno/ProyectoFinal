@@ -1,5 +1,5 @@
 <template>
-  <div id="content">
+  <div id="content" class="mt-10">
     <v-row class="py-16">
       <v-col>
         <div align="center">

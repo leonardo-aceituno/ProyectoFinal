@@ -14,7 +14,7 @@
           <v-list-item-icon class="mx-auto">
             <v-btn
               v-if="usuario.uid == administrador || buscaEmpresa().length == 0"
-              color="#FF8A38"
+              color="#FF8459"
               @click="crearEmpresa"
               dark
               id="test_crearempresa"

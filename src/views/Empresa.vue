@@ -19,7 +19,9 @@
               </v-col>
 
               <v-col cols="12" class="mt-5">
-                <p class="text-justify">{{ empresa.data.descripcion }}</p>
+                <p class="text-justify size14">
+                  {{ empresa.data.descripcion }}
+                </p>
               </v-col>
             </v-row>
           </v-container>
@@ -30,14 +32,19 @@
           <v-container>
             <v-row>
               <v-col cols="12">
-                <h2>{{ empresa.data.nombre }}</h2>
-                <h6>{{ empresa.data.categoria }}</h6>
+                <p class="size24">{{ empresa.data.nombre }}</p>
+                <p class="size10 mt-n5">{{ empresa.data.categoria }}</p>
+                <!-- <h2>{{ empresa.data.nombre }}</h2>
+                <h6>{{ empresa.data.categoria }}</h6> -->
               </v-col>
 
               <v-col cols="12" class="mt-n4">
-                <p><strong>Region :</strong> {{ empresa.data.region }}</p>
+                <p>
+                  <span class="bold">Región:</span> {{ empresa.data.region }}
+                </p>
                 <p class="mt-n5">
-                  <strong>Comuna :</strong> {{ empresa.data.comuna }}
+                  <span class="bold">Comuna:</span>
+                  {{ empresa.data.comuna }}
                 </p>
               </v-col>
 
@@ -46,16 +53,17 @@
                 <v-container>
                   <div class="d-flex justify-start">
                     <v-icon size="18" class="pe-2">mdi-account</v-icon>
-                    <h4>{{ empresa.data.responsable }}</h4>
+                    {{ empresa.data.responsable }}
+                    <!-- <h4>{{ empresa.data.responsable }}</h4> -->
                   </div>
                   <div class="d-flex justify-start">
                     <v-icon size="18" class="pe-2">mdi-email</v-icon>
-                    <h4>{{ empresa.data.email }}</h4>
+                    {{ empresa.data.email }}
                   </div>
 
                   <div class="d-flex justify-start">
                     <v-icon size="18" class="pe-2">mdi-phone</v-icon>
-                    <h4>{{ empresa.data.telefono }}</h4>
+                    {{ empresa.data.telefono }}
                   </div>
 
                   <div
@@ -63,7 +71,7 @@
                     v-if="empresa.data.instagram != ''"
                   >
                     <v-icon size="18" class="pe-2">mdi-instagram</v-icon>
-                    <h4>{{ empresa.data.instagram }}</h4>
+                    {{ empresa.data.instagram }}
                   </div>
 
                   <div
@@ -71,7 +79,7 @@
                     v-if="empresa.data.facebook != ''"
                   >
                     <v-icon size="18" class="pe-2">mdi-facebook</v-icon>
-                    <h4>{{ empresa.data.facebook }}</h4>
+                    {{ empresa.data.facebook }}
                   </div>
 
                   <div
@@ -79,7 +87,7 @@
                     v-if="empresa.data.twitter != ''"
                   >
                     <v-icon size="18" class="pe-2">mdi-twitter</v-icon>
-                    <h4>{{ empresa.data.twitter }}</h4>
+                    {{ empresa.data.twitter }}
                   </div>
 
                   <div
@@ -87,18 +95,16 @@
                     v-if="empresa.data.web != ''"
                   >
                     <v-icon size="18" class="pe-2">mdi-web</v-icon>
-                    <h4>{{ empresa.data.web }}</h4>
+                    {{ empresa.data.web }}
                   </div>
                 </v-container>
                 <v-divider></v-divider>
               </v-col>
 
               <v-col cols="12" class="d-flex justify-space-between align-end">
+                <div class="size12">Compartir:</div>
                 <div>
-                  <h5>Compartir:</h5>
-                </div>
-                <div>
-                  <v-btn x-small color="#3b5998" dark href="" target="_blank">
+                  <v-btn x-small color="#3b5998" dark target="_blank">
                     <v-icon size="13" class="pe-0">mdi-facebook</v-icon>
                     <span class="size08">Facebook</span>
                   </v-btn>
@@ -120,7 +126,11 @@
               </v-col>
 
               <v-col cols="12" class="my-10">
-                <v-btn color="#E49F06" block dark @click="enviarComentario"
+                <v-btn
+                  color="#FFD459"
+                  block
+                  font-weight-bold
+                  @click="enviarComentario"
                   >Enviar mensaje</v-btn
                 >
               </v-col>
@@ -150,6 +160,11 @@ export default {
       const identificador = this.empresa.data.key;
       this.actualizaEmpresaContacto(identificador);
       this.$router.push({ name: 'contacto' });
+    },
+
+    compartir() {
+      console.log('COMPARTE');
+      alert('JERE');
     },
   },
 };

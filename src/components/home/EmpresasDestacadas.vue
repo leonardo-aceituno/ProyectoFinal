@@ -18,7 +18,7 @@
       </v-row>
 
       <div class="d-flex justify-center mt-15">
-        <v-btn class="" color="#0F85D1" dark large to="/empresas">
+        <v-btn class="" color="#3D9BE9" dark large to="/empresas">
           Ver todas las Empresas
         </v-btn>
       </div>
